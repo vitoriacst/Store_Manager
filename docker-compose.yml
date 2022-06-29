@@ -48,7 +48,7 @@ services:
     ports:
       # Garanta que não haverá conflitos de porta com um banco que esteja
       # rodando localmente
-      - 3306:3306
+      - 3307:3307
 
 # Lista de redes que os containeres irão utilizar
 networks:
