@@ -5,6 +5,6 @@ const runSchema = (schema) => (data) => {
     throw error;
   }
   return value;
-}
+};
 
-module.exports = {runSchema}
+module.exports = { runSchema };

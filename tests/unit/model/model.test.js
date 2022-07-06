@@ -2,8 +2,7 @@ const { models } = require('../../../models/products.models')
 const connection = require('../../../models/connection');
 
 const sinon = require('sinon')
-const { expect , use} = require('chai');
-
+const { expect, use } = require('chai');
 
 const data = [
   {
