@@ -12,5 +12,10 @@ const controllerProducts = {
     const listProductsById = await productsService.productListById(id);
     res.status(200).json(listProductsById);
   },
+  InsertProductList: async (req, res) => {
+    const { name } = treatments.body(req.body);
+    const InsertedProducts = await productsService.InsertProductList(name);
+    res.status(201).json(InsertedProducts);
+  },
 };
 module.exports = { controllerProducts };

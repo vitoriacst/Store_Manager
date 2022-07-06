@@ -12,6 +12,11 @@ const productsService = {
     if (!products) throw new NotFoundError('Product not found');
     return products;
   },
+
+  InsertProductList: async (name) => {
+    const products = await models.InsertProductsList(name);
+    return products;
+  },
 };
 
 module.exports = { productsService };
