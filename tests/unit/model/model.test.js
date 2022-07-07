@@ -33,7 +33,14 @@ describe(' Testando -> products Model ', () => {
     })
   })
   describe('Testando a funcao ListByid', () => {
-    it('se a funcao List lista os produtos', async () => {
+    it('se a funcao List lista os produtos de acordo com o id', async () => {
+      sinon.stub(connection, 'query').resolves([[data]])
+      const response = await models.productsListById(1)
+      expect(response).to.be.equal(data)
+    })
+  })
+   describe('Testando nao podemos inserir os dados sem o name', () => {
+    it('Testando nao podemos inserir os dados sem o name', async () => {
       sinon.stub(connection, 'query').resolves([[data]])
       const response = await models.productsListById(1)
       expect(response).to.be.equal(data)
