@@ -14,6 +14,10 @@ const productsService = {
     return products;
   },
 
+ InsertProductList: async (name) => {
+    const products = await models.InsertProductsList(name);
+    return products;
+  },
   // atualizar o produto
   updateProduct: async (id, name) => {
     const products = await models.updateProduct(id, name);
