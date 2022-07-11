@@ -22,7 +22,7 @@ const productsService = {
     }
     return products.product;
   },
-
+// deletar o produto
   deleteProduct: async (id) => {
     const products = await models.deleteProduct(id);
     if (!products) throw new NotFoundError('Product not found');

@@ -19,7 +19,7 @@ const controllerProducts = {
     const productEdit = await productsService.updateProduct(id, name);
     res.status(200).json(productEdit);
    },
-
+// criando func de deletar um produto com base em seu id
   deleteProduct: async (req, res) => {
     const { id } = treatments.id(req.params);
     const removeProduct = await productsService.deleteProduct(id);
