@@ -22,6 +22,12 @@ const productsService = {
     }
     return products.product;
   },
+
+  deleteProduct: async (id) => {
+    const products = await models.deleteProduct(id);
+    if (!products) throw new NotFoundError('Product not found');
+    return true;
+  },
 };
 
 module.exports = { productsService };
