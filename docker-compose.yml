@@ -19,7 +19,7 @@ services:
     working_dir: /home/node/app
     # Lista de volumes (diretórios) mapeados de fora para dentro do container
     volumes:
-      # Monta o diretório atual, com todos os dados do projeto, 
+      # Monta o diretório atual, com todos os dados do projeto,
       # dentro do diretório /app
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
@@ -48,7 +48,7 @@ services:
     ports:
       # Garanta que não haverá conflitos de porta com um banco que esteja
       # rodando localmente
-      - 3307:3307
+      - 3306:3306
 
 # Lista de redes que os containeres irão utilizar
 networks:

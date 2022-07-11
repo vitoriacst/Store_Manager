@@ -1,5 +1,3 @@
-const Joi = require('joi');
-const rescue = require('express-rescue');
 const { productsService } = require('../services/products.services');
 const { treatments } = require('../middlewares/treatments');
 
@@ -14,13 +12,11 @@ const controllerProducts = {
     const listProductsById = await productsService.productListById(id);
     res.status(200).json(listProductsById);
   },
-  InsertProductList: rescue(async (req, res, next) => {
-    const { error } = Joi.object({ name: Joi.string().required().min(5).not() }).validate(req.body);
-    if (error) return next(error);
-    const { name } = req.body;
-    const InsertedProducts = await productsService.InsertProductList(name);
-    if (!InsertedProducts) return next(error);
-    return res.status(201).json(InsertedProducts);
-  }),
+
+   createProduct: async (req, res) => {
+     const { name } = treatments.body(req.body);
+     const product = await productsService.updateProduct(name);
+     res.status(201).json(product);
+  },
 };
 module.exports = { controllerProducts };

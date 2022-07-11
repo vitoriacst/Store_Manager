@@ -13,11 +13,17 @@ const models = {
     return listById;
   },
 
-  InsertProductsList: async (name) => {
-    const products = 'INSERT INTO StoreManager.products(name)values(?)';
-    const [{ insertId }] = await connection.query(products, [name]);
-    return { id: insertId, name };
+  updateProduct: async (id, name) => {
+    const products = 'UPDATE StoreManager.products SET name = ? WHERE id = ?';
+    const [{ changes }] = await connection.query(products, [name, id]);
+    return { changes, product: { id, name } };
+  },
+  deleteProduct: async (id) => {
+    const products = 'DELETE FROM StoreManager.products WHERE id = ?';
+    const [{ changes }] = await connection.query(products, [id]);
+    return changes;
   },
 
 };
+
 module.exports = { models };
