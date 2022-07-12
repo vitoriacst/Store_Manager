@@ -45,6 +45,20 @@ describe(' Testando -> products Model ', () => {
       const response = await models.productsListById(1)
       expect(response).to.be.equal(data)
     })
+   })
+   describe('Testa a função update', () => {
+    it('Verifica se é possível editar um produto', async () => {
+      sinon.stub(connection, 'query').resolves([{ insertId: 1 }]);
+      expect(productsModel.edit(editado.product.id, editado.product.name)).to.eventually.be.deep.equal(editado);
+    })
+  })
+
+  describe('Testa a função delete', () => {
+    it('Testa se é possível deletar um produto', async () => {
+      sinon.stub(connection, 'query').resolves([{ changes: 1 }]);
+      const response = await productsModel.delete(1);
+      expect(response).to.be.equal(1);
+    })
   })
 })
 
