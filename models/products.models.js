@@ -12,17 +12,21 @@ const connection = require('./connection');
     return listById;
   };
 
-  const InsertProductsList = async (name) => {
-    const products = 'INSERT INTO StoreManager.products(name)values(?)';
-    const [{ insertId }] = await connection.query(products, [name]);
-    return { id: insertId, name };
-  };
+   const InsertProductsList = async (name) => {
+     const products = 'INSERT INTO StoreManager.products(name)values(?)';
+     const [{ insertId }] = await connection.query(products, [name]);
+     return { id: insertId, name };
+   };
 
   const updateProduct = async (id, name) => {
-    const products = 'UPDATE StoreManager.products SET name = ? WHERE id = ?';
-    const [{ changes }] = await connection.query(products, [id, name]);
-    return { changes, product: { id, name } };
-  };
+ await connection.query(
+   `UPDATE StoreManager.products
+      SET name= ?
+      WHERE id = ?`,
+    [name, id],
+  );
+  return productsListById(id);
+};
 
   const deleteProduct = async (id) => {
     const products = 'DELETE FROM StoreManager.products WHERE id = ?';
@@ -30,10 +34,20 @@ const connection = require('./connection');
     return changes;
   };
 
+// const Exists = async (id) => {
+// const exists = await connection.query(
+//    `SELECT 1 FROM StoreManager.products
+//       WHERE id = ?`,
+//   [id],
+// );
+//   return !!exists;
+// };
+
 module.exports = {
   deleteProduct,
   updateProduct,
 InsertProductsList,
 productsListById,
-productsList,
+  productsList,
+// Exists,
 };
