@@ -20,12 +20,11 @@ const NotFoundError = require('../middlewares/error/NotFoundError');
   };
 
   // atualizar o produto
- const updateProduct = async (id, name) => {
+const updateProduct = async (id, name) => {
+  const verify = productListById(id);
+   if (verify.error) return verify;
     const products = await models.updateProduct(id, name);
-    if (!products.changes) {
-      throw new NotFoundError('Product not found');
-    }
-    return products.product;
+    return products;
   };
 // deletar o produto
 const deleteProduct = async (id) => {
