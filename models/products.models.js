@@ -20,7 +20,7 @@ const connection = require('./connection');
 
   const updateProduct = async (id, name) => {
     const products = 'UPDATE StoreManager.products SET name = ? WHERE id = ?';
-    const [{ changes }] = await connection.query(products, [name, id]);
+    const [{ changes }] = await connection.query(products, [id, name]);
     return { changes, product: { id, name } };
   };
 

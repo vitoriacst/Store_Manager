@@ -14,7 +14,7 @@ const NotFoundError = require('../middlewares/error/NotFoundError');
     return products;
   };
 
- const InsertProductList = async (name) => {
+const InsertProductList = async (name) => {
     const products = await models.InsertProductsList(name);
     return products;
   };

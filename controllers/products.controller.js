@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const rescue = require('express-rescue');
 const productsService = require('../services/products.services');
 const { treatments } = require('../middlewares/treatments');
 
@@ -14,11 +15,16 @@ const productsListById = async (req, res) => {
   };
 
   // inserindo produtos
-const InsertProductList = async (req, res) => {
-    const { name } = treatments.body(req.body);
-    const InsertedProducts = await productsService.InsertProductList(name);
+const InsertProductList = rescue(async (req, res, next) => {
+   const { error } = Joi.object({
+  name: Joi.string().required().min(5).not(),
+  }).validate(req.body);
+  if (error) return next(error);
+    const { name } = req.body;
+  const InsertedProducts = await productsService.InsertProductList(name);
+  if (!InsertProductList) return next.error;
     return res.status(201).json(InsertedProducts);
-  };
+  });
 // criando func para editar (update) um produto existente
 const updateProduct = (async (req, res, next) => {
    const { error } = Joi.object({
