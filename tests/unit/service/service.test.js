@@ -57,14 +57,16 @@ describe('Arquivo Services', () => {
     });
  });
 
-//   describe('func insert products', () => {
-//    it('verifica se conseguimos adicionar um novo produto',async() => {
-//      sinon.stub(models, 'InsertProductsList').resolves(1);
-//      const teste = await services.InsertProductListt(1, { name: "Martelo do Thor" })
-//      console.log(teste,'test service');
-//      return expect(services.InsertProductListt(1,{name: "Martelo do Thor"})).to.eventually.equal(1);
-//    });
-//  });
+ describe('func insert products', () => {
+  it('verifica se conseguimos adicionar um novo produto',async() => {
+    sinon.stub(models, 'InsertProductsList').resolves(1);
+    const teste = await services.InsertProductListt( "Martelo do Thor" )
+    console.log(teste,'test service');
+    expect(teste).to.have.property('id');
+    expect(teste.name).to.be.equal("Martelo do Thor");
+  });
+
+});
 });
 // describe(' Testando -> products Services ', () => {
 //   beforeEach(sinon.restore)

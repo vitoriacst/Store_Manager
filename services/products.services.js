@@ -21,11 +21,12 @@ const productListById = async (id) => {
       code: 'NOT_FOUND', message: 'Product not found' },
     };
   }
-    return products;
+  return products;
   };
 
 const InsertProductListt = async (name) => {
-    const products = await InsertProductsList(name);
+  const products = await InsertProductsList(name);
+  console.log(products, 'linha 29 service');
   return { id: products, name };
 };
 
