@@ -12,7 +12,8 @@ const {
   };
 
 // listar o produto por id
- const productListById = async (id) => {
+const productListById = async (id) => {
+   console.log('entrei na 16');
     const products = await productsListById(id);
   if (!products) {
  return {
@@ -30,7 +31,9 @@ const InsertProductListt = async (name) => {
 
 // atualizar o produto
 const updateProducts = async (id, name) => {
-  const verify = productListById(id);
+  console.log('linha 33');
+  const verify = await productListById(id);
+  console.log(verify, 'teste lina 34');
    if (verify.error) return verify;
     const products = await updateProduct(id, name);
     return products;
