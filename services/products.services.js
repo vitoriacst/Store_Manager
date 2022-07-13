@@ -40,9 +40,11 @@ const updateProducts = async (id, name) => {
   };
 // deletar o produto
 const deleteProducts = async (id) => {
-  const verify = productListById(id);
+  const verify = await productListById(id);
+  console.log(verify, 'linha 34 service');
   if (verify.error) return verify;
-    const products = await deleteProduct(id);
+  const products = await deleteProduct(id);
+  console.log(products, 'linha 47');
     return products;
   };
 

@@ -55,10 +55,12 @@ const updateProduct = rescue(async (req, res, next) => {
 
 // criando func de deletar um produto com base em seu id
  const deleteProduct = async (req, res, next) => {
-    const { id } = req.params;
-    const removeProduct = await deleteProducts(id);
-    if (removeProduct.error) return next(removeProduct.error);
-    return res.status(204).send();
+   const { id } = req.params;
+   console.log(id, 'linha 59');
+   const removeProduct = await deleteProducts(id);
+   console.log(removeProduct, 'linha 60');
+   if (removeProduct.error) { return next(removeProduct.error); }
+    return res.status(204).end();
    };
 module.exports = {
   deleteProduct,

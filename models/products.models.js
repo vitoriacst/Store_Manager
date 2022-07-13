@@ -30,18 +30,10 @@ const connection = require('./connection');
 
   const deleteProduct = async (id) => {
     const products = 'DELETE FROM StoreManager.products WHERE id = ?';
-    const [{ changes }] = await connection.query(products, [id]);
+    const changes = await connection.query(products, [id]);
+    console.log(changes, 'linha 34 model');
     return changes;
   };
-
-// const Exists = async (id) => {
-// const exists = await connection.query(
-//    `SELECT 1 FROM StoreManager.products
-//       WHERE id = ?`,
-//   [id],
-// );
-//   return !!exists;
-// };
 
 module.exports = {
   deleteProduct,
