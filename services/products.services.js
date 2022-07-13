@@ -26,7 +26,7 @@ const productListById = async (id) => {
 
 const InsertProductListt = async (name) => {
     const products = await InsertProductsList(name);
-    return products;
+  return { id: products, name };
 };
 
 // atualizar o produto
