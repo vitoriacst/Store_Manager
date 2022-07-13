@@ -1,6 +1,9 @@
-const { productsListById,
+const {
+  productsListById,
   productsList,
-  deleteProduct, updateProduct, InsertProductsList } = require('../models/products.models');
+  deleteProduct,
+  updateProduct,
+  InsertProductsList } = require('../models/products.models');
 
 // listar todos os produtos
   const productList = async () => {
@@ -20,12 +23,12 @@ const { productsListById,
     return products;
   };
 
-const InsertProductList = async (name) => {
+const InsertProductListt = async (name) => {
     const products = await InsertProductsList(name);
     return products;
-  };
+};
 
-  // atualizar o produto
+// atualizar o produto
 const updateProducts = async (id, name) => {
   const verify = productListById(id);
    if (verify.error) return verify;
@@ -43,7 +46,7 @@ const deleteProducts = async (id) => {
 module.exports = {
   deleteProducts,
   updateProducts,
-InsertProductList,
+InsertProductListt,
 productListById,
 productList,
 };

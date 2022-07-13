@@ -13,7 +13,7 @@ const connection = require('./connection');
   };
 
    const InsertProductsList = async (name) => {
-     const products = 'INSERT INTO StoreManager.products(name)values(?)';
+     const products = 'INSERT INTO StoreManager.products (name) values(?)';
      const [{ insertId }] = await connection.query(products, [name]);
      return { id: insertId, name };
    };

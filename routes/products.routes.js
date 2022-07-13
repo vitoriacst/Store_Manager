@@ -10,4 +10,4 @@ products.get('/', productsList);
 products.post('/', InsertProductList);
 products.put('/:id', updateProduct);
 products.delete('/:id', deleteProduct);
-module.exports = { products };
+module.exports = products;
